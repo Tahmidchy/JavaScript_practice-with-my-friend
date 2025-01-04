@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>From Event</title>
+</head>
+<body>
+  <form>
+         <input type="text" name="username" placeholder="your name"/>
+         <input type="email" name="email" placeholder="your email"/>
+         <input type="submit" value="submit"/>
+    </form>
+    <p id="data"></p>
+
+    <script>
+          const forms = document.forms
+          const form = forms[0]
+          const username = form[0]
+          const email = form[1]
+          const btnSubmit = form[2]
+
+        //   console.log(username.value);
+
+          btnSubmit.addEventListener('click',(event)=>{
+              event.preventDefault();
+              if(username.value === "" || email.value === ""){
+                alert('Input field cannot be empty')
+              }
+              else{
+                  document.getElementById('data').innerText = `Your Name: ${username.value.trim()}, Your Email: ${email.value.trim()}`
+                  username.value = '';
+                  email.value = '';
+              }
+          })
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DoM Navigation</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-size: 20px;
+    }
+    #header{
+      background-color: darkolivegreen;
+    }
+    .wrapper{
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo{
+      font-family: monospace;
+      color: #fff;
+      font-size: 25px;
+      font-weight: 600;
+    }
+    .right{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav{
+      list-style-type: none;
+      font-family: cursive;
+      display: flex;
+      gap: 10px;
+      & li a{
+        color: #fff;
+        font-weight: 300;
+        text-decoration: none;
+        position: relative;
+
+        &::after{
+          content: "";
+                position: absolute;
+                width:0%;
+                left: 0;
+                bottom: 0;
+                border-bottom: 2px solid #ddd;
+                transition: all 0.3s linear;
+        }
+      }
+      & li a:hover:after{
+                width: 100%;
+            }
+    }
+
+    button{
+            padding: 10px;
+            border: 3px solid orange;
+            border-radius: 50px;
+            background: none;
+            font-size: 16px;
+            color: #fff;
+            font-weight: 600;
+
+            &:hover{
+                background: coral;
+                color: #000;
+                font-weight: 600;
+                border: 3px solid #ddd;
+                transition: all 1s;
+            }
+        }
+  </style>
+</head>
+<body>
+<section id="header">
+  <div class="wrapper">
+            <div class="left">
+               <h2 class="logo">Logo</h2>
+            </div>
+            <div class="right">
+               <ul class="nav">
+                   <li><a href="#" >Home</a></li>
+                   <li><a href="#" >About</a></li>
+                   <li><a href="#" >Services</a></li>
+                   <li><a href="#" >Contact</a></li>
+               </ul>
+               <button>Sign up</button>
+           </div>
+        </div>
+</section>
+
+<script>
+   //get Html full document
+          const fullDoc = document.documentElement;
+          console.log(fullDoc);
+          //get Html document head
+          const docHead = document.head;
+          console.log(docHead);
+          //get Html document body
+          const docBody = document.body;
+          console.log(docBody);
+
+          //get document Title
+          const docTitle = document.title;
+          console.log('Document Title: ',docTitle);
+
+          //get document Title
+          const docURL = document.URL;
+          console.log(docURL);
+
+          //get document Title
+          const docBaseURL = document.baseURI;
+          console.log(docBaseURL);
+
+
+          const navElem = document.querySelector('.nav');
+          //get parent Element
+          const parentElem = navElem.parentElement.parentElement
+           console.log(parentElem);
+
+          const parentNode = navElem.parentNode
+           console.log(parentNode);
+
+          //get Next Sibling of the element.
+          const nextElemSibling = navElem.nextElementSibling
+          console.log(nextElemSibling);
+
+          //get Previous Sibling of the element.
+          const prevElemSibling = parentElem.previousElementSibling
+          console.log(prevElemSibling);
+
+          //get children of the element
+          const elemChildren = parentElem.children
+          console.log(elemChildren);
+          //get child Node of the element
+          const elemChildNode = parentElem.childNodes
+          console.log(elemChildNode);
+
+          //get element First child
+          const firstChild = parentElem.firstChild
+          console.log(firstChild);
+
+          //get element last child
+          const lastChild = parentElem.lastChild
+          console.log(lastChild);
+
+          //get childNode as index
+          const elemChild = parentElem.childNodes[3]
+          console.log(elemChild);
+</script>
+</body>
+</html>

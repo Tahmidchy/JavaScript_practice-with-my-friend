@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Create DOM elements.</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-size: 30px;
+    }
+    #root{
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      justify-content: center;
+      align-items: center;
+    }
+    .fruitlist{
+      background: cornflowerblue;
+        padding: 25px;
+        border-radius: 5px;
+        list-style-type: none;
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        & li {
+          background: rgb(241, 48, 106);
+          padding: 15px;
+    }
+  }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    const root = document.getElementById("root");
+    const ulElem = document.createElement("ul");
+    const liElem1 = document.createElement("li");
+    const liElem2 = document.createElement("li");
+    const liElem3 = document.createElement("li");
+    const liElem4 = document.createElement("li");
+      ulElem.classList.add("fruitlist");
+      liElem1.innerText = "Mango";
+      liElem2.innerText = "Banana";
+      liElem3.innerText = "Guava";
+      liElem4.innerText = "Orange";
+
+      ulElem.setAttribute('id','ulList');
+      ulElem.style.background = 'skyblue';
+
+      liElem1.style.borderRadius = '8px';
+      liElem2.style.borderRadius = '8px';
+      liElem3.style.borderRadius = '8px';
+      liElem4.style.borderRadius = '8px';
+
+      ulElem.append(liElem1, liElem2, liElem3, liElem4);
+
+      root.append(ulElem);
+  </script>
+</body>
+</html>

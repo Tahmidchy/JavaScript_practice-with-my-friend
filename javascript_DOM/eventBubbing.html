@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Bubbling, Event Capturing and Event Propagation</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .wrapper{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      justify-content: center;
+      align-items: center;
+    }
+#outerdiv,
+      #outerdiv1,
+      #outerdiv2 {
+        background: green;
+        width: 600px;
+        height: 450px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #middlediv,
+      #middlediv1,
+      #middlediv2 {
+        background: orange;
+        width: 400px;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #innerdiv,
+      #innerdiv1,
+      #innerdiv2 {
+        background: crimson;
+        width: 200px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+  </style>
+</head>
+<body>
+<div class="wrapper">
+      <h2>Bubbling(down to up)</h2>
+      <div id="outerdiv">
+        <h2>Outer Div</h2>
+        <div id="middlediv">
+          <h2>Middle Div</h2>
+          <div id="innerdiv"><h2>Inner Div</h2></div>
+        </div>
+      </div>
+
+      <h2>Capturing(up to down)</h2>
+      <div id="outerdiv1">
+        <h2>Outer Div 1</h2>
+        <div id="middlediv1">
+          <h2>Middle Div 1</h2>
+          <div id="innerdiv1"><h2>Inner Div 1</h2></div>
+        </div>
+      </div>
+
+      <h2>Propagation(stop bubbling and capturing)</h2>
+      <div id="outerdiv2">
+        <h2>Outer Div 2</h2>
+        <div id="middlediv2">
+          <h2>Middle Div 2</h2>
+          <div id="innerdiv2"><h2>Inner Div 2</h2></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const outerDiv = document.getElementById("outerdiv");
+      const middleDiv = document.getElementById("middlediv");
+      const innerDiv = document.getElementById("innerdiv");
+      const outerDiv1 = document.getElementById("outerdiv1");
+      const middleDiv1 = document.getElementById("middlediv1");
+      const innerDiv1 = document.getElementById("innerdiv1");
+      const outerDiv2 = document.getElementById("outerdiv2");
+      const middleDiv2 = document.getElementById("middlediv2");
+      const innerDiv2 = document.getElementById("innerdiv2");
+
+      outerDiv.addEventListener("click", () => {
+        console.log("Outer Div Click");
+      },false);
+
+      middleDiv.addEventListener("click", () => {
+        console.log("middle Div Click");
+      },false);
+
+      innerDiv.addEventListener("click", () => {
+        console.log("inner Div Click");
+      },false);
+
+      //Capturing:
+      outerDiv1.addEventListener("click", () => {
+        console.log("Outer Div Click");
+      },true);
+
+      middleDiv1.addEventListener("click", () => {
+        console.log("middle Div Click");
+      },true);
+
+      innerDiv1.addEventListener("click",() => {
+          console.log("inner Div Click");
+        },true);
+
+      //Propagation:
+      outerDiv2.addEventListener("click", (event) => {
+        console.log("Outer Div Click");
+         event.stopPropagation();
+      });
+
+      middleDiv2.addEventListener("click", (event) => {
+        console.log("middle Div Click");
+        event.stopPropagation();
+      });
+
+      innerDiv2.addEventListener("click",(event) => {
+          console.log("inner Div Click");
+        event.stopPropagation();
+
+        });
+    </script>
+</body>
+</html>
